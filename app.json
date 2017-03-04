@@ -1,0 +1,6 @@
+{
+  "name": "ethiotradestats",
+  "description": "Rest api for getting ethiopian trade statistics",
+  "repository": "https://github.com/...",
+  "keywords": ["express", "node"]
+}
