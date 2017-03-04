@@ -1,4 +1,3 @@
-const fs = require('fs');
 const xlsx = require('xlsx');
 const ProgressBar = require('progress');
 // Database connection
@@ -107,22 +106,6 @@ function importHeadings(row, cb) {
     });
   });
 }
-
-
-// ?
-function handleError(message) {
-  db.section.delete({}, (err) => {
-    if (err) { throw new Error()};
-  });
-  db.chapter.delete({}, (err) => {
-    if (err) { throw new Error()};
-  });
-  db.heading.delete({}, (err) => {
-    if (err) { throw new Error()};
-  });
-  throw new Error(message);
-}
-
 
 // Call the functions
 importSections(rows, () => {
