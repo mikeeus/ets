@@ -114,10 +114,10 @@ COUNTRIES.forEach(country => {
     name: country,
     aliases: aliases
   }, (err, saved) => {
-    bar.tick()
     if (err) { return console.error(`${country} had an error while importing: `, err); }
+    bar.tick();
+    if (bar.complete) {
+      process.exit();
+    }
   });
-  if (bar.complete) {
-    process.exit();
-  }
 });

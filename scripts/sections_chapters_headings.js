@@ -43,14 +43,14 @@ function importSections(rows, cb) {
   let sections = rows.filter(row => row.tier === '1');
   let bar = new ProgressBar(':current :percent :bar :eta', { total: sections.length, complete: '|', incomplete: '-'});
   sections.forEach(section => {
-    bar.tick();
     db.section.insert({code: section.code, description: section.description}, (err, s) => {
+      bar.tick();
       if (err) { throw err; }
       insertEmptyChapter(s.code);
+      if (bar.complete) {
+        cb();
+      }
     });
-    if (bar.complete) {
-      cb();
-    }
   });
 }
 
