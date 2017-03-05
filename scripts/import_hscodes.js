@@ -39,7 +39,7 @@ function importHscodes(rows) {
         db.heading.findOne({code: row.code.slice(0,6)}, (err, heading) => {
           if (err) { return console.error('Heading: ', heading.code, '  |  ', err); }
           if (!heading) {
-            console.log('Heading: ', row.code.slice(0,6), ' does not exist.');
+            console.log('Heading: ', row.code.slice(0,6), ' does not exist. Will be added.');
             db.heading.insert({
               code: row.code.slice(0,6),
               chapter: row.code.slice(0,4),
